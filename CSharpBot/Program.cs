@@ -63,14 +63,8 @@ namespace WPFGuidBot
             #region Обработка кнопок с клавиатуры
             switch (textMessage)
             {
-                case ("Введение в C#"):
-                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"  Ты только начинаешь изучать C#? Вот, послушай, несколько интересных моментов:
-    На сегодняшний день, язык программирования C# один из самых мощных, быстро развивающихся и востребованных языков в ИТ-отрасли. В настоящий момент на нем пишутся самые различные приложения: от небольших десктопных программ до крупных веб-порталов и веб-сервисов, обслуживающих ежедневно миллионы пользователей.
-    По сравнению с другими языками C# достаточно молодой, но в то же время он уже прошел большой путь. Первая версия языка вышла вместе с релизом Microsoft Visual Studio .NET в феврале 2002 года. Текущей версией языка является версия C# 8.0, которая вышла в сентябре 2019 года вместе с релизом .NET Core 3.
-    C# является языком с Си-подобным синтаксисом и близок в этом отношении к C++ и Java. Поэтому, если вы знакомы с одним из этих языков, то овладеть C# будет легче.
-    C# является объектно-ориентированным и в этом плане много перенял у Java и С++. Например, C# поддерживает полиморфизм, наследование, перегрузку операторов, статическую типизацию. Объектно-ориентированный подход позволяет решить задачи по построению крупных, но в тоже время гибких, масштабируемых и расширяемых приложений. И C# продолжает активно развиваться, и с каждой новой версией появляется все больше интересных функциональностей, как, например, лямбды, динамическое связывание, асинхронные методы и т.д.");
-                    break;
 
+                #region Ютуб каналы
                 case ("SimpleCode"):
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"Ведущий канала явно знает, о чем говорит. Его канал посвящен только C#, что говорит о том, что автор максимально погружен в тему и не распыляется на другие языки программирования.
 Мы считаем, что этот канал является лучшим выбором, если вы хотите глубоко изучит тему и научиться таким вещам, как машинное обучение и прочим сложным проектам.");
@@ -100,6 +94,16 @@ namespace WPFGuidBot
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://www.youtube.com/c/SergeyK/featured");
                     break;
 
+                case ("Введение в C#"):
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"  Ты только начинаешь изучать C#? Вот, послушай, несколько интересных моментов:
+    На сегодняшний день, язык программирования C# один из самых мощных, быстро развивающихся и востребованных языков в ИТ-отрасли. В настоящий момент на нем пишутся самые различные приложения: от небольших десктопных программ до крупных веб-порталов и веб-сервисов, обслуживающих ежедневно миллионы пользователей.
+    По сравнению с другими языками C# достаточно молодой, но в то же время он уже прошел большой путь. Первая версия языка вышла вместе с релизом Microsoft Visual Studio .NET в феврале 2002 года. Текущей версией языка является версия C# 8.0, которая вышла в сентябре 2019 года вместе с релизом .NET Core 3.
+    C# является языком с Си-подобным синтаксисом и близок в этом отношении к C++ и Java. Поэтому, если вы знакомы с одним из этих языков, то овладеть C# будет легче.
+    C# является объектно-ориентированным и в этом плане много перенял у Java и С++. Например, C# поддерживает полиморфизм, наследование, перегрузку операторов, статическую типизацию. Объектно-ориентированный подход позволяет решить задачи по построению крупных, но в тоже время гибких, масштабируемых и расширяемых приложений. И C# продолжает активно развиваться, и с каждой новой версией появляется все больше интересных функциональностей, как, например, лямбды, динамическое связывание, асинхронные методы и т.д.");
+                    break;
+                #endregion
+
+                #region Статьи
                 case ("Что такое WPF, и с чем его едят"):
                     path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\PublicComeInWPF.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
@@ -155,6 +159,57 @@ namespace WPFGuidBot
                 case ("Как работают кнопки"):
                     break;
 
+                
+
+                case ("Программа сортировки массива"):
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\ArraySort\Text1.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://sun9-42.userapi.com/cMDp6XLNBXLIZG1n2QcWsV8Q9-dGyME6iinbXg/IQx2hiatTTY.jpg");
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\ArraySort\Text2.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://sun9-4.userapi.com/Ie3FxJLyOCB7EurEE4iwKErWGraOXtyeL1fu5A/7r8-4xGlryA.jpg");
+                    break;
+
+                case ("Вывод случайного числа"):
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\RandomNum\1.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/167LjUjfezMykkYQRRciUSSFXPAMaZD5P/view?usp=sharing");
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\RandomNum\2.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1Vz0fi6heoFlqk1HrEQyawC5L7KtcHtiZ/view?usp=sharing");
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\RandomNum\3.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1w0a7mCUGNhEck2IQKp6sHKxy4GEk03rE/view?usp=sharing");
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\RandomNum\4.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/16v9ZyHRSjaQHDr50S7t_Om44VuA1vXqf/view?usp=sharing");
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\RandomNum\5.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1iNs23-uqxPK0GKMolu2Kj8bEEoPlwg2C/view?usp=sharing");
+                    break;
+
+
+
+                #region Книги
                 case ("Изучение C#"):
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://www.combook.ru/imgrab/0057/11867331_nviss_0.jpg");
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"Погружаясь в книгу «Язык программирования C# 7 для платформы .NET и .NET Core» Вы выясните, почему на
@@ -181,6 +236,9 @@ namespace WPFGuidBot
 функциональными возможностями, и в ходе изложения предоставляет вам все необходимые знания.");
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://shorturl.at/agBDM");
                     break;
+                    #endregion
+
+                    #endregion
             }
             #endregion
         }
@@ -198,14 +256,14 @@ namespace WPFGuidBot
             string nameOfUser = $"{message.From.FirstName} {message.From.LastName}";
 
             #region Добавление всех сообщений в базу данных
-            dbTelegEntities db = new dbTelegEntities();
-            db.UserInfo.Add(new UserInfo()
+            CSharpBotEntities modelDB = new CSharpBotEntities();
+            modelDB.UserInfo.Add(new UserInfo()
             {
-                UserFirstName = e.Message.Chat.FirstName,
-                IdUser = e.Message.From.Id,
-                UserText = e.Message.Text
+                UserName = e.Message.Chat.FirstName,
+                UserID = e.Message.From.Id,
+                Message = e.Message.Text
             });
-            db.SaveChanges();
+            modelDB.SaveChanges();
             #endregion
 
             if (message.Type != MessageType.Text)
@@ -289,6 +347,14 @@ namespace WPFGuidBot
                         {
                             InlineKeyboardButton.WithCallbackData("Как работает дизайн"),
                             InlineKeyboardButton.WithCallbackData("Как работают кнопки")
+                        },
+                        new[]
+                        {
+                            InlineKeyboardButton.WithCallbackData("Программа сортировки массива")
+                        },
+                        new[]
+                        {
+                            InlineKeyboardButton.WithCallbackData("Вывод случайного числа"),
                         }
                     }
                     );
@@ -340,6 +406,7 @@ namespace WPFGuidBot
 /stop - если я тебе надоел и ты хочешь прекратить общаться со мной;
 /topic - тут ты можешь посмотреть все темы которые я знаю по WPF и изучить их вместе со мной!;
 /about - если ты захотел узнать о нас, тыкай;
+/youtube - 
 /help - полный список команд";
                     await bot.SendPhotoAsync(message.From.Id, "https://upload.wikimedia.org/wikipedia/ru/thumb/1/11/Chip%27n_Dale_Rescue_Rangers_logo.jpg/250px-Chip%27n_Dale_Rescue_Rangers_logo.jpg");
                     await bot.SendTextMessageAsync(message.From.Id, text);

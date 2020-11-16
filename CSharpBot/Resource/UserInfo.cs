@@ -15,13 +15,8 @@ namespace CSharpBot.Resource
     public partial class UserInfo
     {
         public int Id { get; set; }
-        public Nullable<int> IdUser { get; set; }
-        public string UserFirstName { get; set; }
-        public string UserText { get; set; }
-
-        public override string ToString()
-        {
-            return $"{Id} {IdUser} {UserFirstName} {UserText}";
-        }
+        public string UserName { get; set; }
+        public string Message { get; set; }
+        public Nullable<double> UserID { get; set; }
     }
 }
