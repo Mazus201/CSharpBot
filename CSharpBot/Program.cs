@@ -50,7 +50,7 @@ namespace WPFGuidBot
         /// <param name="e"></param>
         private static async void botOnCallbackQueeryRecived(object sender, CallbackQueryEventArgs e)
         {
-            string textMessage = e.CallbackQuery.Data;
+            string textMessage = e.CallbackQuery.Data; 
             textMessage = textMessage.Trim();
             string name = $"{e.CallbackQuery.From.FirstName} {e.CallbackQuery.From.LastName}";
 
@@ -153,10 +153,6 @@ namespace WPFGuidBot
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
                     await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1uUhGvtj_DXEisoTuNzxc9EXq4aX9QmyR/view?usp=sharing");
-
-                    break;
-
-                case ("Как работают кнопки"):
                     break;
 
                 
@@ -207,7 +203,7 @@ namespace WPFGuidBot
                     await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1iNs23-uqxPK0GKMolu2Kj8bEEoPlwg2C/view?usp=sharing");
                     break;
 
-
+                    #endregion
 
                 #region Книги
                 case ("Изучение C#"):
@@ -238,7 +234,6 @@ namespace WPFGuidBot
                     break;
                     #endregion
 
-                    #endregion
             }
             #endregion
         }
@@ -255,16 +250,7 @@ namespace WPFGuidBot
             string text;
             string nameOfUser = $"{message.From.FirstName} {message.From.LastName}";
 
-            #region Добавление всех сообщений в базу данных
-            CSharpBotEntities modelDB = new CSharpBotEntities();
-            modelDB.UserInfo.Add(new UserInfo()
-            {
-                UserName = e.Message.Chat.FirstName,
-                UserID = e.Message.From.Id,
-                Message = e.Message.Text
-            });
-            modelDB.SaveChanges();
-            #endregion
+           
 
             if (message.Type != MessageType.Text)
             {
@@ -345,8 +331,7 @@ namespace WPFGuidBot
                         },
                         new[]
                         {
-                            InlineKeyboardButton.WithCallbackData("Как работает дизайн"),
-                            InlineKeyboardButton.WithCallbackData("Как работают кнопки")
+                            InlineKeyboardButton.WithCallbackData("Как работает дизайн")
                         },
                         new[]
                         {
@@ -406,7 +391,7 @@ namespace WPFGuidBot
 /stop - если я тебе надоел и ты хочешь прекратить общаться со мной;
 /topic - тут ты можешь посмотреть все темы которые я знаю по WPF и изучить их вместе со мной!;
 /about - если ты захотел узнать о нас, тыкай;
-/youtube - 
+/youtube - каналы, которые помогут в изучении C#;
 /help - полный список команд";
                     await bot.SendPhotoAsync(message.From.Id, "https://upload.wikimedia.org/wikipedia/ru/thumb/1/11/Chip%27n_Dale_Rescue_Rangers_logo.jpg/250px-Chip%27n_Dale_Rescue_Rangers_logo.jpg");
                     await bot.SendTextMessageAsync(message.From.Id, text);
@@ -417,6 +402,25 @@ namespace WPFGuidBot
                 default:
                     text = "Прости, я еще молодой бот и мало, чего умею, но я учусь, будь уверен 🤓";
                     await bot.SendTextMessageAsync(message.From.Id, text);
+
+                    #region Добавление всех сообщений в базу данных
+                    try
+                    {
+                        CSharpBotEntities modelDB = new CSharpBotEntities();
+                        modelDB.UserInfo.Add(new UserInfo()
+                        {
+                            UserName = e.Message.Chat.FirstName,
+                            UserID = e.Message.From.Id,
+                            Message = e.Message.Text
+                        });
+                        modelDB.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ошибка базы данных. \n {ex}");
+                    }
+                    #endregion
+
                     break;
                     #endregion
             }

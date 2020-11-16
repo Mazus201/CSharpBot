@@ -16,7 +16,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="50" />
-    <Property Name="Message" Type="nvarchar" MaxLength="450" />
+    <Property Name="Message" Type="nvarchar" MaxLength="450" Nullable="false" />
     <Property Name="UserID" Type="float" />
   </EntityType>
   <EntityContainer Name="Хранилище CSharpBotModelContainer">

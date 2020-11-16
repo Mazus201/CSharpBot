@@ -1,0 +1,17 @@
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\bin\Release\CSharpBot.exe.config
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\bin\Release\CSharpBot.exe
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\bin\Release\CSharpBot.pdb
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\bin\Release\EntityFramework.dll
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\bin\Release\Newtonsoft.Json.dll
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\bin\Release\Telegram.Bot.dll
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\bin\Release\EntityFramework.xml
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\bin\Release\Newtonsoft.Json.xml
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\bin\Release\Telegram.Bot.xml
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\bin\Release\ru\EntityFramework.resources.dll
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\obj\Release\CSharpBot.csprojAssemblyReference.cache
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\obj\Release\CSharpBot.csproj.CoreCompileInputs.cache
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\obj\Release\CSharpBot.csproj.CopyComplete
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\obj\Release\CSharpBot.exe
+C:\Users\Никита\source\repos\CSharpBot\CSharpBot\obj\Release\CSharpBot.pdb
