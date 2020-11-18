@@ -54,6 +54,7 @@ namespace WPFGuidBot
             textMessage = textMessage.Trim();
             string name = $"{e.CallbackQuery.From.FirstName} {e.CallbackQuery.From.LastName}";
 
+
             Console.WriteLine($"{name} выбрал {textMessage}");
 
             string[] ReadText;
@@ -260,6 +261,7 @@ namespace WPFGuidBot
             #endregion
 
             Console.WriteLine($"{nameOfUser} сообщение: '{message.Text}'");
+            CSharpBotEntities modelDB = new CSharpBotEntities();
 
             #region Обработка команд и введенного текста
             switch (message.Text)
@@ -275,6 +277,15 @@ namespace WPFGuidBot
 Если тебе это интересно, то пиши команду /help, чтобы ознакомиться с тем, на что я способен 😉";
                     //await bot.SendStickerAsync(message.From.Id, "file:///C:/Users/%D0%9D%D0%B8%D0%BA%D0%B8%D1%82%D0%B0/Desktop/sticker.webp");
                     await bot.SendTextMessageAsync(message.From.Id, text);
+
+                    modelDB.UserInfo.Add(new UserInfo()
+                    {
+                        UserName = e.Message.Chat.FirstName,
+                        UserID = e.Message.From.Id,
+                        Message = e.Message.Text
+                    });
+                    modelDB.SaveChanges();
+
                     break;
                 #endregion
 
@@ -283,6 +294,13 @@ namespace WPFGuidBot
                     text = "Очень жаль, конечно, что ты нас бросаешь, но я очень надеюсь, что тебе было интересно!";
                     await bot.SendTextMessageAsync(message.From.Id, text);
                     await bot.SendPhotoAsync(message.From.Id, "https://www.ivi.ru/titr/uploads/2016/09/02/da11cf8201ebe0d66e8178c4c5a34e4d.jpg/1400x0");
+                    modelDB.UserInfo.Add(new UserInfo()
+                    {
+                        UserName = e.Message.Chat.FirstName,
+                        UserID = e.Message.From.Id,
+                        Message = e.Message.Text
+                    });
+                    modelDB.SaveChanges();
                     break;
                 #endregion
 
@@ -310,6 +328,13 @@ namespace WPFGuidBot
                     });
                     await bot.SendPhotoAsync(message.From.Id, "https://i2.wp.com/lalupadesherlock.com/wp-content/uploads/2017/05/YouTube_logo-the-lab-media1.png?w=1920&ssl=1");
                     await bot.SendTextMessageAsync(message.From.Id, "Держи список лучших русскоязычных блогеров-C#-программистов, которые научат тебя писать качественный код!", replyMarkup: youtubeBlogers);
+                    modelDB.UserInfo.Add(new UserInfo()
+                    {
+                        UserName = e.Message.Chat.FirstName,
+                        UserID = e.Message.From.Id,
+                        Message = e.Message.Text
+                    });
+                    modelDB.SaveChanges();
                     break;
                 #endregion
 
@@ -346,6 +371,13 @@ namespace WPFGuidBot
 
                     await bot.SendTextMessageAsync(message.From.Id, "Надеюсь, ниже ты найдешь что-то, что будет для тебя полезно!", replyMarkup: menuOfTopics);
                     await bot.SendTextMessageAsync(message.From.Id, "Данные для статей были взяты с ресурса metanit.com.");
+                    modelDB.UserInfo.Add(new UserInfo()
+                    {
+                        UserName = e.Message.Chat.FirstName,
+                        UserID = e.Message.From.Id,
+                        Message = e.Message.Text
+                    });
+                    modelDB.SaveChanges();
                     break;
                 #endregion
 
@@ -356,6 +388,13 @@ namespace WPFGuidBot
 По любым вопросом и предложениям пиши, буду рад: @Mazus_nikita";
                     await bot.SendTextMessageAsync(message.From.Id, text);
                     await bot.SendStickerAsync(message.From.Id, "https://kickerock.github.io/let-s-Talk/img/avatr2.png");
+                    modelDB.UserInfo.Add(new UserInfo()
+                    {
+                        UserName = e.Message.Chat.FirstName,
+                        UserID = e.Message.From.Id,
+                        Message = e.Message.Text
+                    });
+                    modelDB.SaveChanges();
                     break;
                 #endregion
 
@@ -380,7 +419,13 @@ namespace WPFGuidBot
                     }
                     );
                     await bot.SendTextMessageAsync(message.From.Id, "Надеюсь, ниже ты найдешь что-то, что будет для тебя полезно!", replyMarkup: listOfBooks);
-
+                    modelDB.UserInfo.Add(new UserInfo()
+                    {
+                        UserName = e.Message.Chat.FirstName,
+                        UserID = e.Message.From.Id,
+                        Message = e.Message.Text
+                    });
+                    modelDB.SaveChanges();
                     break;
                 #endregion
 
@@ -395,6 +440,13 @@ namespace WPFGuidBot
 /help - полный список команд";
                     await bot.SendPhotoAsync(message.From.Id, "https://upload.wikimedia.org/wikipedia/ru/thumb/1/11/Chip%27n_Dale_Rescue_Rangers_logo.jpg/250px-Chip%27n_Dale_Rescue_Rangers_logo.jpg");
                     await bot.SendTextMessageAsync(message.From.Id, text);
+                    modelDB.UserInfo.Add(new UserInfo()
+                    {
+                        UserName = e.Message.Chat.FirstName,
+                        UserID = e.Message.From.Id,
+                        Message = e.Message.Text
+                    });
+                    modelDB.SaveChanges();
                     break;
                 #endregion
 
@@ -406,7 +458,6 @@ namespace WPFGuidBot
                     #region Добавление всех сообщений в базу данных
                     try
                     {
-                        CSharpBotEntities modelDB = new CSharpBotEntities();
                         modelDB.UserInfo.Add(new UserInfo()
                         {
                             UserName = e.Message.Chat.FirstName,
