@@ -43,6 +43,7 @@ namespace WPFGuidBot
             }
         }
 
+
         /// <summary>
         /// Создание и обработка клавиатуры
         /// </summary>
@@ -66,12 +67,15 @@ namespace WPFGuidBot
             {
 
                 #region Ютуб каналы
+                #region SimpleCode
                 case ("SimpleCode"):
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"Ведущий канала явно знает, о чем говорит. Его канал посвящен только C#, что говорит о том, что автор максимально погружен в тему и не распыляется на другие языки программирования.
 Мы считаем, что этот канал является лучшим выбором, если вы хотите глубоко изучит тему и научиться таким вещам, как машинное обучение и прочим сложным проектам.");
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://www.youtube.com/channel/UCtLKO1Cb2GVNrbU7Fi0pM0w");
                     break;
+                #endregion
 
+                #region BashkaMen Programming
                 case ("BashkaMen Programming"):
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"На этом канале ты найдешь в основном большие видео с разборами крутых програм, тут ты сможешь узнать многое про паттерны, протатипирование. 
 Также ведущие этого канала много и качественно рассказывают про WPF, про то, как выполнять сложные, но интересные проекты, как написаить программу для управления чужим компьютером, например.
@@ -79,14 +83,18 @@ namespace WPFGuidBot
 „Дураки учатся на своих ошибках, а умные — на чужих.“");
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://www.youtube.com/c/BashkaMen/featured");
                     break;
+                #endregion
 
+                #region Гоша Дударь
                 case ("Гоша Дударь"):
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"Гоша Дударь - это один из тех авторов, которые разбираются во многих вещах, но не очень глубоко. 
 На его канале вы сможете выучиться азам языка программирования не только C# и WPF, но и таких важных на сегодняшний день ЯП, как JavaScript, PHP, C++, Java и других.
 В целом, у него очень понятные видео и качественная подача, для новичка - самое то.");
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://www.youtube.com/c/gosha_dudar/featured");
                     break;
+                #endregion
 
+                #region Сергей Камянецкий
                 case ("Сергей Камянецкий"):
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"Сергей - преподаватель с большим стажем, который работает на такой площадке, как GeekBrains.
 Он делает большие стримы, на которых разбирает интересные технологии, такие как EntityFramework, которые необходимы для каждого разработчика.
@@ -94,7 +102,11 @@ namespace WPFGuidBot
 Записи стримов он всегда сохраняет, их у него уже накопилось очень много, каждый найдет для себя что-то полезное!");
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://www.youtube.com/c/SergeyK/featured");
                     break;
+                #endregion
+                #endregion
 
+                #region Статьи
+                #region Введение в C#
                 case ("Введение в C#"):
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"  Ты только начинаешь изучать C#? Вот, послушай, несколько интересных моментов:
     На сегодняшний день, язык программирования C# один из самых мощных, быстро развивающихся и востребованных языков в ИТ-отрасли. В настоящий момент на нем пишутся самые различные приложения: от небольших десктопных программ до крупных веб-порталов и веб-сервисов, обслуживающих ежедневно миллионы пользователей.
@@ -104,14 +116,116 @@ namespace WPFGuidBot
                     break;
                 #endregion
 
-                #region Статьи
+                #region Что такое WPF
                 case ("Что такое WPF, и с чем его едят"):
                     path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\PublicComeInWPF.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
                     break;
+                #endregion
 
+                #region Что нужно знать о платформе
+                case ("Что нужно знать о платформе"):
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\1.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\2.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\3.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\4.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\5.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\6.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\7.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\8.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\9.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\10.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\11.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\12.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\13.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\14.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\15.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\16.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\17.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\18.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\19.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    break;
+                #endregion
+
+                #region Как создать приложение WPF
                 case ("Как создать приложение WPF"):
                     path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\HowToCreateApp\HowToCreatApp.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
@@ -121,7 +235,9 @@ namespace WPFGuidBot
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "Укажем проекту какое - нибудь имя и нажмем кнопку OK. И Visual Studio создаст нам новый проект");
                     await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://metanit.com/sharp/wpf/pics/1.2.png");
                     break;
+                #endregion
 
+                #region Как работает дизайн
                 case ("Как работает дизайн"):
                     path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Design\1.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
@@ -155,9 +271,9 @@ namespace WPFGuidBot
 
                     await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1uUhGvtj_DXEisoTuNzxc9EXq4aX9QmyR/view?usp=sharing");
                     break;
+                #endregion
 
-                
-
+                #region Программа сортировки массива
                 case ("Программа сортировки массива"):
                     path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\ArraySort\Text1.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
@@ -171,7 +287,9 @@ namespace WPFGuidBot
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
                     await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://sun9-4.userapi.com/Ie3FxJLyOCB7EurEE4iwKErWGraOXtyeL1fu5A/7r8-4xGlryA.jpg");
                     break;
+                #endregion
 
+                #region Вывод случайного числа
                 case ("Вывод случайного числа"):
                     path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\RandomNum\1.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
@@ -203,10 +321,13 @@ namespace WPFGuidBot
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
                     await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1iNs23-uqxPK0GKMolu2Kj8bEEoPlwg2C/view?usp=sharing");
                     break;
+                    #endregion
 
                     #endregion
 
                 #region Книги
+
+                #region Изучение C#
                 case ("Изучение C#"):
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://www.combook.ru/imgrab/0057/11867331_nviss_0.jpg");
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"Погружаясь в книгу «Язык программирования C# 7 для платформы .NET и .NET Core» Вы выясните, почему на
@@ -216,7 +337,9 @@ namespace WPFGuidBot
 С помощью настоящей книги вы сможете уверенно использовать язык C# на практике и хорошо ориентироваться в мире .NET");
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://shorturl.at/kuNQ7");
                     break;
+                #endregion
 
+                #region Изучение WPF
                 case ("Изучение WPF"):
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "http://padabum.com/pics/17450.jpg");
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"Данное издание представляет собой углубленное руководство по WPF для профессиональных разработчиков, 
@@ -224,7 +347,22 @@ namespace WPFGuidBot
 (языка разметки, используемого для определения пользовательских интерфейсов WPF) до трехмерного рисования и анимации.");
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://shorturl.at/iv247");
                     break;
+                #endregion
 
+                #region CLR Via C# 
+                case ("Настольная книга C# разработчика"):
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://img3.labirint.ru/rc/7a81633559b9ce3bfd7991c901f043ff/220x340/books41/401209/cover.jpg?1598869507");
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"Эта книга, выходящая в четвертом издании и уже ставшая классическим 
+учебником по программированию, подробно описывает внутреннее устройство и функционирование общеязыковой исполняющей среды (CLR) 
+Microsoft .NET Framework версии 4.5. Написанная признанным экспертом в области программирования Джеффри Рихтером, много лет являющимся 
+консультантом команды разработчиков .NET Framework компании Microsoft, книга научит вас создавать по-настоящему надежные приложения 
+любого вида, в том числе с использованием Microsoft Silverlight, ASP.NET, Windows Presentation Foundation и т.д. Четвертое издание полностью
+обновлено в соответствии со спецификацией платформы .NET Framework 4.5, а также среды Visual Studio 2012 и C# 5.0");
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1zNk561-XvxGgluaPp0bNmpGk3Z-XiQcK/view?usp=sharing");
+                    break;
+                #endregion
+
+                #region Изучение EntityFramework
                 case ("Изучение EntityFramework"):
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://www.kodges.ru/uploads/posts/2019-03/1552840982_cov350m.jpg.pagespeed.ce.jq1FqyvEti.jpg");
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"Автор объясняет, как извлечь максимальную пользу из Entity Framework Core 2 в проектах MVC. 
@@ -233,6 +371,7 @@ namespace WPFGuidBot
 функциональными возможностями, и в ходе изложения предоставляет вам все необходимые знания.");
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://shorturl.at/agBDM");
                     break;
+                    #endregion
                     #endregion
 
             }
@@ -348,6 +487,10 @@ namespace WPFGuidBot
                         },
                         new[]
                         {
+                            InlineKeyboardButton.WithCallbackData("Что нужно знать о платформе")
+                        },
+                        new[]
+                        {
                             InlineKeyboardButton.WithCallbackData("Что такое WPF, и с чем его едят")
                         },
                         new[]
@@ -415,6 +558,10 @@ namespace WPFGuidBot
                         new[]
                         {
                             InlineKeyboardButton.WithCallbackData("Изучение EntityFramework")
+                        },
+                        new[]
+                        {
+                            InlineKeyboardButton.WithCallbackData("Настольная книга C# разработчика")
                         }
                     }
                     );
