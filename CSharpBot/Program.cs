@@ -225,6 +225,76 @@ namespace WPFGuidBot
                     break;
                 #endregion
 
+                #region Дерево в C#
+                case "Как устроена среда разработки":
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\1.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\2.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\3.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\4.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\5.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\6.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\7.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\8.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\9.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\10.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\11.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\12.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\13.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    break;
+
+                #endregion
+
                 #region Как создать приложение WPF
                 case ("Как создать приложение WPF"):
                     path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\HowToCreateApp\HowToCreatApp.txt";
@@ -492,6 +562,10 @@ Microsoft .NET Framework версии 4.5. Написанная признанн
                         new[]
                         {
                             InlineKeyboardButton.WithCallbackData("Что такое WPF, и с чем его едят")
+                        },
+                        new[]
+                        {
+                            InlineKeyboardButton.WithCallbackData("Как устроена среда разработки")
                         },
                         new[]
                         {
