@@ -1,23 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using CSharpBot.Resource;
+using System;
 using Telegram.Bot;
 using Telegram.Bot.Args;
-using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
-using CSharpBot.Resource;
 
-namespace WPFGuidBot
+namespace Bot
 {
     class Program
     {
-
         public static ITelegramBotClient bot;
         static void Main(string[] args)
         {
@@ -30,7 +21,7 @@ namespace WPFGuidBot
                 Console.WriteLine($"Я бот {me.Id}, меня зовут {me.FirstName}");
 
                 bot.OnMessage += Bot_OnMessage;
-                bot.OnCallbackQuery += botOnCallbackQueeryRecived;
+                bot.OnCallbackQuery += BotOnCallbackQueeryRecived;
 
                 bot.StartReceiving();
                 Console.ReadKey();
@@ -44,17 +35,16 @@ namespace WPFGuidBot
         }
 
 
-        /// <summary>
+        /// <summary> 
         /// Создание и обработка клавиатуры
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private static async void botOnCallbackQueeryRecived(object sender, CallbackQueryEventArgs e)
+        private static async void BotOnCallbackQueeryRecived(object sender, CallbackQueryEventArgs e)
         {
-            string textMessage = e.CallbackQuery.Data; 
+            string textMessage = e.CallbackQuery.Data;
             textMessage = textMessage.Trim();
             string name = $"{e.CallbackQuery.From.FirstName} {e.CallbackQuery.From.LastName}";
-
 
             Console.WriteLine($"{name} выбрал {textMessage}");
 
@@ -118,186 +108,366 @@ namespace WPFGuidBot
 
                 #region Что такое WPF
                 case ("Что такое WPF, и с чем его едят"):
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\PublicComeInWPF.txt";
+                    path = @"..\..\Resource\PublicComeInWPF.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    break;
+                #endregion
+
+                #region Hello World
+                case "Hello World":
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"Создадим первое приложение: 'Hello World!' в C#. Запустите Visual Studio.В Windows вы увидите следующее изображение.");
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1E6OqPkPc2vPs4Q-8pG7BAocfYmvyaGfJ/view?usp=sharing");
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, @"Выберите «Создать проект» в правом нижнем углу изображения. В Visual Studio отображается диалоговое окно Новый проект:");
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/14yaF-27KwUKXk1A6ds5UU1nurho8NstA/view?usp=sharing");
+
+                    path = @"..\..\Resource\HelloWorld\1.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1TujNcX_rUfkwSebFS5oUki4g5Ux2z_7G/view?usp=sharing");
                     break;
                 #endregion
 
                 #region Что нужно знать о платформе
                 case ("Что нужно знать о платформе"):
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\1.txt";
+                    path = @"..\..\Resource\AboutDotNet\1.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\2.txt";
+                    path = @"..\..\Resource\AboutDotNet\2.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\3.txt";
+                    path = @"..\..\Resource\AboutDotNet\3.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\4.txt";
+                    path = @"..\..\Resource\AboutDotNet\4.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\5.txt";
+                    path = @"..\..\Resource\AboutDotNet\5.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\6.txt";
+                    path = @"..\..\Resource\AboutDotNet\6.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\7.txt";
+                    path = @"..\..\Resource\AboutDotNet\7.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\8.txt";
+                    path = @"..\..\Resource\AboutDotNet\8.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\9.txt";
+                    path = @"..\..\Resource\AboutDotNet\9.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\10.txt";
+                    path = @"..\..\Resource\AboutDotNet\10.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\11.txt";
+                    path = @"..\..\Resource\AboutDotNet\11.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\12.txt";
+                    path = @"..\..\Resource\AboutDotNet\12.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\13.txt";
+                    path = @"..\..\Resource\AboutDotNet\13.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\14.txt";
+                    path = @"..\..\Resource\AboutDotNet\14.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\15.txt";
+                    path = @"..\..\Resource\AboutDotNet\15.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\16.txt";
+                    path = @"..\..\Resource\AboutDotNet\16.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\17.txt";
+                    path = @"..\..\Resource\AboutDotNet\17.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\18.txt";
+                    path = @"..\..\Resource\AboutDotNet\18.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\AboutDotNet\19.txt";
+                    path = @"..\..\Resource\AboutDotNet\19.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
                     break;
                 #endregion
 
-                #region Дерево в C#
+                #region Массивы
+                case "Массивы":
+                    path = @"..\..\Resource\Array\1.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/16zLkqI6tPtd7H2L4AUrqUMU08vdk20No/view?usp=sharing");
+
+                    path = @"..\..\Resource\Array\2.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "Инициализация массива");
+
+                    path = @"..\..\Resource\Array\3.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/14AX2KcSgrSTENi3gK_nr_8Kiv-NV2onQ/view?usp=sharing");
+
+                    path = @"..\..\Resource\Array\4.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "Неявно типизированные массивы");
+
+                    path = @"..\..\Resource\Array\5.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1QvKruCBQOLIrMXMYQ05K2wrh4z16ZDm-/view?usp=sharing");
+                    break;
+                #endregion
+
+                #region Классы 
+                case "Классы":
+                    path = @"..\..\Resource\Class\1.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"..\..\Resource\Array\2.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    break;
+                #endregion
+
+                #region Методы
+                case "Методы":
+                    path = @"..\..\Resource\Method\1.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1ky7VWjCxERyp-raRTCEEuiDxjeHsdhtc/view?usp=sharing");
+
+                    path = @"..\..\Resource\Method\2.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    path = @"..\..\Resource\Method\3.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "Возврат из метода и возврат значения");
+
+                    path = @"..\..\Resource\Method\4.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1qqzTirl6CzB7vkJ19InsBslpwz0mUkt9/view?usp=sharing");
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1MbdcwjmUyJQth0WdHkSFFmN9at2aUBm3/view?usp=sharing");
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1E6AIobDm_G0aFTCErcJ9Lj5LsXMoSzrp/view?usp=sharing");
+
+                    break;
+                #endregion
+
+                #region Переменные
+                case "Переменные":
+                    path = @"..\..\Resource\Perem\1.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "Тип Имя_Переменной");
+
+                    break;
+                #endregion
+
+                #region Наследование
+                case "Наследование":
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "Тут будет статья про наследование");
+                    break;
+                #endregion
+
+                #region Полиморфизм
+                case "Полиморфизм":
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "Тут будет статья про полиморфизм");
+                    break;
+                #endregion
+
+                #region Как установить Visual Studio
+                case "Как установить Visual Studio":
+                    path = @"..\..\Resource\InstallVS\1.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, "https://www.visualstudio.com/ru/vs/");
+
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1FXntQHWeysGgrmy3tVDhja7YZMb-ZBC8/view?usp=sharing");
+                    break;
+                #endregion
+
+                #region Как устроена среда разработки
                 case "Как устроена среда разработки":
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\1.txt";
+                    path = @"..\..\Resource\Tree\1.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\2.txt";
+                    path = @"..\..\Resource\Tree\2.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\3.txt";
+                    path = @"..\..\Resource\Tree\3.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\4.txt";
+                    path = @"..\..\Resource\Tree\4.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\5.txt";
+                    path = @"..\..\Resource\Tree\5.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\6.txt";
+                    path = @"..\..\Resource\Tree\6.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\7.txt";
+                    path = @"..\..\Resource\Tree\7.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\8.txt";
+                    path = @"..\..\Resource\Tree\8.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\9.txt";
+                    path = @"..\..\Resource\Tree\9.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\10.txt";
+                    path = @"..\..\Resource\Tree\10.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\11.txt";
+                    path = @"..\..\Resource\Tree\11.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\12.txt";
-                    ReadText = System.IO.File.ReadAllLines(path);
-                    TextTopic = string.Concat(ReadText);
-                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
-
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Tree\13.txt";
+                    path = @"..\..\Resource\Tree\12.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
                     break;
 
+                #endregion
+
+                #region Программа сортировки массива
+                case ("Программа сортировки массива"):
+                    path = @"..\..\Resource\ArraySort\Text1.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://sun9-42.userapi.com/cMDp6XLNBXLIZG1n2QcWsV8Q9-dGyME6iinbXg/IQx2hiatTTY.jpg");
+
+                    path = @"..\..\Resource\ArraySort\Text2.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://sun9-4.userapi.com/Ie3FxJLyOCB7EurEE4iwKErWGraOXtyeL1fu5A/7r8-4xGlryA.jpg");
+                    break;
+                #endregion
+
+                #region Вывод случайного числа
+                case ("Вывод случайного числа"):
+                    path = @"..\..\Resource\RandomNum\1.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/167LjUjfezMykkYQRRciUSSFXPAMaZD5P/view?usp=sharing");
+
+                    path = @"..\..\Resource\RandomNum\2.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1Vz0fi6heoFlqk1HrEQyawC5L7KtcHtiZ/view?usp=sharing");
+
+                    path = @"..\..\Resource\RandomNum\3.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1w0a7mCUGNhEck2IQKp6sHKxy4GEk03rE/view?usp=sharing");
+
+                    path = @"..\..\Resource\RandomNum\4.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/16v9ZyHRSjaQHDr50S7t_Om44VuA1vXqf/view?usp=sharing");
+
+                    path = @"..\..\Resource\RandomNum\5.txt";
+                    ReadText = System.IO.File.ReadAllLines(path);
+                    TextTopic = string.Concat(ReadText);
+                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
+                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1iNs23-uqxPK0GKMolu2Kj8bEEoPlwg2C/view?usp=sharing");
+                    break;
                 #endregion
 
                 #region Как создать приложение WPF
                 case ("Как создать приложение WPF"):
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\HowToCreateApp\HowToCreatApp.txt";
+                    path = @"..\..\Resource\HowToCreateApp\HowToCreatApp.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
@@ -309,32 +479,32 @@ namespace WPFGuidBot
 
                 #region Как работает дизайн
                 case ("Как работает дизайн"):
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Design\1.txt";
+                    path = @"..\..\Resource\Design\1.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Design\2.txt";
+                    path = @"..\..\Resource\Design\2.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Design\3.txt";
+                    path = @"..\..\Resource\Design\3.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Design\4.txt";
+                    path = @"..\..\Resource\Design\4.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Design\5.txt";
+                    path = @"..\..\Resource\Design\5.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
 
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\Design\6.txt";
+                    path = @"..\..\Resource\Design\6.txt";
                     ReadText = System.IO.File.ReadAllLines(path);
                     TextTopic = string.Concat(ReadText);
                     await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
@@ -343,57 +513,7 @@ namespace WPFGuidBot
                     break;
                 #endregion
 
-                #region Программа сортировки массива
-                case ("Программа сортировки массива"):
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\ArraySort\Text1.txt";
-                    ReadText = System.IO.File.ReadAllLines(path);
-                    TextTopic = string.Concat(ReadText);
-                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
-                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://sun9-42.userapi.com/cMDp6XLNBXLIZG1n2QcWsV8Q9-dGyME6iinbXg/IQx2hiatTTY.jpg");
-
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\ArraySort\Text2.txt";
-                    ReadText = System.IO.File.ReadAllLines(path);
-                    TextTopic = string.Concat(ReadText);
-                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
-                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://sun9-4.userapi.com/Ie3FxJLyOCB7EurEE4iwKErWGraOXtyeL1fu5A/7r8-4xGlryA.jpg");
-                    break;
                 #endregion
-
-                #region Вывод случайного числа
-                case ("Вывод случайного числа"):
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\RandomNum\1.txt";
-                    ReadText = System.IO.File.ReadAllLines(path);
-                    TextTopic = string.Concat(ReadText);
-                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
-                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/167LjUjfezMykkYQRRciUSSFXPAMaZD5P/view?usp=sharing");
-
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\RandomNum\2.txt";
-                    ReadText = System.IO.File.ReadAllLines(path);
-                    TextTopic = string.Concat(ReadText);
-                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
-                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1Vz0fi6heoFlqk1HrEQyawC5L7KtcHtiZ/view?usp=sharing");
-
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\RandomNum\3.txt";
-                    ReadText = System.IO.File.ReadAllLines(path);
-                    TextTopic = string.Concat(ReadText);
-                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
-                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1w0a7mCUGNhEck2IQKp6sHKxy4GEk03rE/view?usp=sharing");
-
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\RandomNum\4.txt";
-                    ReadText = System.IO.File.ReadAllLines(path);
-                    TextTopic = string.Concat(ReadText);
-                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
-                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/16v9ZyHRSjaQHDr50S7t_Om44VuA1vXqf/view?usp=sharing");
-
-                    path = @"C:\Users\Никита\source\repos\CSharpBot\CSharpBot\Resource\RandomNum\5.txt";
-                    ReadText = System.IO.File.ReadAllLines(path);
-                    TextTopic = string.Concat(ReadText);
-                    await bot.SendTextMessageAsync(e.CallbackQuery.From.Id, TextTopic);
-                    await bot.SendPhotoAsync(e.CallbackQuery.From.Id, "https://drive.google.com/file/d/1iNs23-uqxPK0GKMolu2Kj8bEEoPlwg2C/view?usp=sharing");
-                    break;
-                    #endregion
-
-                    #endregion
 
                 #region Книги
 
@@ -460,8 +580,6 @@ Microsoft .NET Framework версии 4.5. Написанная признанн
             string text;
             string nameOfUser = $"{message.From.FirstName} {message.From.LastName}";
 
-           
-
             if (message.Type != MessageType.Text)
             {
                 Console.WriteLine($"{nameOfUser} неопознанный объект");
@@ -469,8 +587,8 @@ Microsoft .NET Framework версии 4.5. Написанная признанн
             }
             #endregion
 
-            Console.WriteLine($"{nameOfUser} сообщение: '{message.Text}'");
-            CSharpBotEntities modelDB = new CSharpBotEntities();
+            Console.WriteLine($"{nameOfUser} сообщение: '{message.Text}'"); //вывод в консоль поведения юзера
+            wsr_user_16Entities2 modelDB = new wsr_user_16Entities2(); //модель БД
 
             #region Обработка команд и введенного текста
             switch (message.Text)
@@ -487,13 +605,20 @@ Microsoft .NET Framework версии 4.5. Написанная признанн
                     //await bot.SendStickerAsync(message.From.Id, "file:///C:/Users/%D0%9D%D0%B8%D0%BA%D0%B8%D1%82%D0%B0/Desktop/sticker.webp");
                     await bot.SendTextMessageAsync(message.From.Id, text);
 
-                    modelDB.UserInfo.Add(new UserInfo()
+                    try
                     {
-                        UserName = e.Message.Chat.FirstName,
-                        UserID = e.Message.From.Id,
-                        Message = e.Message.Text
-                    });
-                    modelDB.SaveChanges();
+                        modelDB.UserInfo.Add(new UserInfo()
+                        {
+                            UserName = e.Message.Chat.FirstName,
+                            UserId = e.Message.From.Id,
+                            Message = e.Message.Text
+                        });
+                        modelDB.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ошибка базы данных. \n {ex}");
+                    }
 
                     break;
                 #endregion
@@ -503,13 +628,20 @@ Microsoft .NET Framework версии 4.5. Написанная признанн
                     text = "Очень жаль, конечно, что ты нас бросаешь, но я очень надеюсь, что тебе было интересно!";
                     await bot.SendTextMessageAsync(message.From.Id, text);
                     await bot.SendPhotoAsync(message.From.Id, "https://www.ivi.ru/titr/uploads/2016/09/02/da11cf8201ebe0d66e8178c4c5a34e4d.jpg/1400x0");
-                    modelDB.UserInfo.Add(new UserInfo()
+                    try
                     {
-                        UserName = e.Message.Chat.FirstName,
-                        UserID = e.Message.From.Id,
-                        Message = e.Message.Text
-                    });
-                    modelDB.SaveChanges();
+                        modelDB.UserInfo.Add(new UserInfo()
+                        {
+                            UserName = e.Message.Chat.FirstName,
+                            UserId = e.Message.From.Id,
+                            Message = e.Message.Text
+                        });
+                        modelDB.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ошибка базы данных. \n {ex}");
+                    }
                     break;
                 #endregion
 
@@ -537,13 +669,20 @@ Microsoft .NET Framework версии 4.5. Написанная признанн
                     });
                     await bot.SendPhotoAsync(message.From.Id, "https://i2.wp.com/lalupadesherlock.com/wp-content/uploads/2017/05/YouTube_logo-the-lab-media1.png?w=1920&ssl=1");
                     await bot.SendTextMessageAsync(message.From.Id, "Держи список лучших русскоязычных блогеров-C#-программистов, которые научат тебя писать качественный код!", replyMarkup: youtubeBlogers);
-                    modelDB.UserInfo.Add(new UserInfo()
+                    try
                     {
-                        UserName = e.Message.Chat.FirstName,
-                        UserID = e.Message.From.Id,
-                        Message = e.Message.Text
-                    });
-                    modelDB.SaveChanges();
+                        modelDB.UserInfo.Add(new UserInfo()
+                        {
+                            UserName = e.Message.Chat.FirstName,
+                            UserId = e.Message.From.Id,
+                            Message = e.Message.Text
+                        });
+                        modelDB.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ошибка базы данных. \n {ex}");
+                    }
                     break;
                 #endregion
 
@@ -561,40 +700,62 @@ Microsoft .NET Framework версии 4.5. Написанная признанн
                         },
                         new[]
                         {
-                            InlineKeyboardButton.WithCallbackData("Что такое WPF, и с чем его едят")
-                        },
-                        new[]
-                        {
+                            InlineKeyboardButton.WithCallbackData("Как установить Visual Studio"),
                             InlineKeyboardButton.WithCallbackData("Как устроена среда разработки")
                         },
                         new[]
                         {
-                            InlineKeyboardButton.WithCallbackData("Как создать приложение WPF"),
+                              InlineKeyboardButton.WithCallbackData("Hello World"),
+                              InlineKeyboardButton.WithCallbackData("Переменные в C#")
                         },
                         new[]
                         {
-                            InlineKeyboardButton.WithCallbackData("Как работает дизайн")
+                            InlineKeyboardButton.WithCallbackData("Переменные"),
+                            InlineKeyboardButton.WithCallbackData("Массивы")
                         },
                         new[]
                         {
+                              InlineKeyboardButton.WithCallbackData("Методы"),
+                              InlineKeyboardButton.WithCallbackData("Классы")
+                        },
+                        //new[]
+                        //{
+                        //      InlineKeyboardButton.WithCallbackData("Наследование"),
+                        //      InlineKeyboardButton.WithCallbackData("Полиморфизм")
+                        //},
+                        new[]
+                        {
+                            InlineKeyboardButton.WithCallbackData("Вывод случайного числа"),
                             InlineKeyboardButton.WithCallbackData("Программа сортировки массива")
                         },
                         new[]
                         {
-                            InlineKeyboardButton.WithCallbackData("Вывод случайного числа"),
+                            InlineKeyboardButton.WithCallbackData("Что такое WPF, и с чем его едят")
+                        },
+                        new[]
+                        {
+                            InlineKeyboardButton.WithCallbackData("Как создать приложение WPF"),
+                            InlineKeyboardButton.WithCallbackData("Как работает дизайн")
                         }
                     }
                     );
 
                     await bot.SendTextMessageAsync(message.From.Id, "Надеюсь, ниже ты найдешь что-то, что будет для тебя полезно!", replyMarkup: menuOfTopics);
                     await bot.SendTextMessageAsync(message.From.Id, "Данные для статей были взяты с ресурса metanit.com.");
-                    modelDB.UserInfo.Add(new UserInfo()
+                    try
                     {
-                        UserName = e.Message.Chat.FirstName,
-                        UserID = e.Message.From.Id,
-                        Message = e.Message.Text
-                    });
-                    modelDB.SaveChanges();
+                        modelDB.UserInfo.Add(new UserInfo()
+                        {
+                            UserName = e.Message.Chat.FirstName,
+                            UserId = e.Message.From.Id,
+                            Message = e.Message.Text
+                        });
+                        modelDB.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ошибка базы данных. \n {ex}");
+                    }
                     break;
                 #endregion
 
@@ -605,13 +766,20 @@ Microsoft .NET Framework версии 4.5. Написанная признанн
 По любым вопросом и предложениям пиши, буду рад: @Mazus_nikita";
                     await bot.SendTextMessageAsync(message.From.Id, text);
                     await bot.SendStickerAsync(message.From.Id, "https://kickerock.github.io/let-s-Talk/img/avatr2.png");
-                    modelDB.UserInfo.Add(new UserInfo()
+                    try
                     {
-                        UserName = e.Message.Chat.FirstName,
-                        UserID = e.Message.From.Id,
-                        Message = e.Message.Text
-                    });
-                    modelDB.SaveChanges();
+                        modelDB.UserInfo.Add(new UserInfo()
+                        {
+                            UserName = e.Message.Chat.FirstName,
+                            UserId = e.Message.From.Id,
+                            Message = e.Message.Text
+                        });
+                        modelDB.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ошибка базы данных. \n {ex}");
+                    }
                     break;
                 #endregion
 
@@ -639,14 +807,21 @@ Microsoft .NET Framework версии 4.5. Написанная признанн
                         }
                     }
                     );
-                    await bot.SendTextMessageAsync(message.From.Id, "Надеюсь, ниже ты найдешь что-то, что будет для тебя полезно!", replyMarkup: listOfBooks);
-                    modelDB.UserInfo.Add(new UserInfo()
+                    await bot.SendTextMessageAsync(message.From.Id, $"{text} \n Надеюсь, ниже ты найдешь что-то, что будет для тебя полезно!", replyMarkup: listOfBooks);
+                    try
                     {
-                        UserName = e.Message.Chat.FirstName,
-                        UserID = e.Message.From.Id,
-                        Message = e.Message.Text
-                    });
-                    modelDB.SaveChanges();
+                        modelDB.UserInfo.Add(new UserInfo()
+                        {
+                            UserName = e.Message.Chat.FirstName,
+                            UserId = e.Message.From.Id,
+                            Message = e.Message.Text
+                        });
+                        modelDB.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ошибка базы данных. \n {ex}");
+                    }
                     break;
                 #endregion
 
@@ -661,13 +836,20 @@ Microsoft .NET Framework версии 4.5. Написанная признанн
 /help - полный список команд";
                     await bot.SendPhotoAsync(message.From.Id, "https://upload.wikimedia.org/wikipedia/ru/thumb/1/11/Chip%27n_Dale_Rescue_Rangers_logo.jpg/250px-Chip%27n_Dale_Rescue_Rangers_logo.jpg");
                     await bot.SendTextMessageAsync(message.From.Id, text);
-                    modelDB.UserInfo.Add(new UserInfo()
+                    try
                     {
-                        UserName = e.Message.Chat.FirstName,
-                        UserID = e.Message.From.Id,
-                        Message = e.Message.Text
-                    });
-                    modelDB.SaveChanges();
+                        modelDB.UserInfo.Add(new UserInfo()
+                        {
+                            UserName = e.Message.Chat.FirstName,
+                            UserId = e.Message.From.Id,
+                            Message = e.Message.Text
+                        });
+                        modelDB.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ошибка базы данных. \n {ex}");
+                    }
                     break;
                 #endregion
 
@@ -682,7 +864,7 @@ Microsoft .NET Framework версии 4.5. Написанная признанн
                         modelDB.UserInfo.Add(new UserInfo()
                         {
                             UserName = e.Message.Chat.FirstName,
-                            UserID = e.Message.From.Id,
+                            UserId = e.Message.From.Id,
                             Message = e.Message.Text
                         });
                         modelDB.SaveChanges();
