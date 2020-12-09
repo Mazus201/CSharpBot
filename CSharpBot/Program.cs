@@ -833,6 +833,7 @@ Microsoft .NET Framework версии 4.5. Написанная признанн
 /topic - тут ты можешь посмотреть все темы которые я знаю по WPF и изучить их вместе со мной!;
 /about - если ты захотел узнать о нас, тыкай;
 /youtube - каналы, которые помогут в изучении C#;
+/book - литература, которая поможет глубже изучить программирование;
 /help - полный список команд";
                     await bot.SendPhotoAsync(message.From.Id, "https://upload.wikimedia.org/wikipedia/ru/thumb/1/11/Chip%27n_Dale_Rescue_Rangers_logo.jpg/250px-Chip%27n_Dale_Rescue_Rangers_logo.jpg");
                     await bot.SendTextMessageAsync(message.From.Id, text);
